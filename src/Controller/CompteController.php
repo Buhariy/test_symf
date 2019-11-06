@@ -4,11 +4,16 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+/**
+ * @Route("/compte", name="compte")
+ *  @IsGranted("ROLE_USER")
+ */
 class CompteController extends AbstractController
 {
     /**
-     * @Route("/compte", name="compte")
+     * @Route("/", name="compte")
      */
     public function index()
     {
