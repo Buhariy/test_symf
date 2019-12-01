@@ -1,5 +1,7 @@
+{% extends 'base.html.twig' %}
 
 {% block body %}
+
 <html>
         <link rel="shortcut icon" type="image/png" href="Img/logo.png"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -8,7 +10,8 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <style>
             .bodyCSS{
-                background-image: radial-gradient(circle at top left, black,red,black);
+                background: linear-gradient(#8E0E00, #1F1C18);
+                
             }
 
             .blockInscription{
@@ -33,51 +36,22 @@
     </style>
     <title>ESKA</title>
     <body class="bodyCSS">
-        <div class="blockInscription">
-            <img src="Img/logo.png" style="width:60px;height:60px"/>
-           <p  class="typo"  style="font-weight:bold;">Inscription</p>
-           <table class="typo">
-               <tr>
-                    <td>Nom :</td>
-               </tr>
-               <tr>
-                    <td><input type="text"  style="margin-top:5px;" class="typo"></input></td>
-               </tr>
-               <tr>
-                    <td>Prénom :</td>
-               </tr>
-               <tr>
-                    <td><input type="text"  style="margin-top:5px;"/></td>
-               </tr>
-               <tr>
-                    <td>Pseudo :</td>
-               </tr>
-               <tr>
-                    <td><input type="text"  style="margin-top:5px;" ></td>
-               </tr>
-               <tr>
-                    <td>Date (format : JJ/MM/AAAA ) :</td>
-               </tr>
-               <tr>
-                    <td><input type=date("${d/m/Y}")  style="margin-top:5px;"/></td>
-               </tr>
-               <tr>
-                    <td>Mot de passe :</td>
-               </tr>
-               <tr>
-                    <td><input type="text"  style="margin-top:5px;"/></td>
-               </tr>
-               <tr>
-                    <td>Ressaisissez votre mot de passe :</td>
-               </tr>
-               <tr>
-                    <td ><input type="text"  style="margin-top:5px;"/></td>
-               </tr>
-               <tr>
-                    <td><input type="submit" value="Inscription" style="text-align:center;" class="btn btn-danger"/></td>
-               </tr>
-           </table>
-        </div>
+          <div class="row" style="margin-top: 50px; padding: 10px 50px 20px;">
+               {% for video in videos %}
+                    <div class="col" style="margin-top: 50px;" >
+                        <a style ="text-decoration: none;" href="{{path('detail_video',{'id' : video.id})}}">
+                        <p>Lorme ipsum dolor sitamet</p>
+                         <video controls width="500" height="250">
+                              <source src={{video.link }}
+                              type="video/webm">
+                              <source src={{video.link}}
+                              type="video/mp4">
+                              Sorry, your browser doesn't support embedded videos.
+                         </video>
+                         </a>
+                    </div>
+                     {% endfor %}
+          </div>
     </body>
 </html>
 {% endblock %}
